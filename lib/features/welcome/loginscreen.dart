@@ -13,6 +13,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  //connector for connecting flutter dapp to wallet
   var connector = WalletConnect(
       bridge: 'https://bridge.walletconnect.org',
       clientMeta: const PeerMeta(
@@ -33,15 +34,14 @@ class _LoginScreenState extends State<LoginScreen> {
           _uri = uri;
           await launchUrlString(uri, mode: LaunchMode.externalApplication);
         });
-        print(session.accounts[0]);
-        print(session.chainId);
         setState(() {
           _session = session;
         });
       } catch (exp) {
         print(exp);
       }
-    }
+    } else
+      print('connected already');
   }
 
   getNetworkName(chainId) {
@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
       case 42:
         return 'Kovan Testnet';
       case 137:
-        return 'Polygon Mainnet'; //are we using polygon mainnet or testnet?
+        return 'Polygon Mainnet';
       case 80001:
         return 'Mumbai Testnet';
       default:
@@ -78,8 +78,6 @@ class _LoginScreenState extends State<LoginScreen> {
         'session_update',
         (payload) => setState(() {
               _session = payload;
-              print(_session.accounts[0]);
-              print(_session.chainId);
             }));
     connector.on(
         'disconnect',
@@ -120,35 +118,35 @@ class _LoginScreenState extends State<LoginScreen> {
                               )
                             ],
                           ),
-                          const SizedBox(height: 20),
-                          // (_session.chainId != 80001)
-                          //     ? Row(
-                          //         children: const [
-                          //           Icon(Icons.warning,
-                          //               color: Colors.redAccent, size: 15),
-                          //           Text('Network not supported. Switch to '),
-                          //           Text(
-                          //             'Mumbai Testnet',
-                          //             style:
-                          //                 TextStyle(fontWeight: FontWeight.bold),
-                          //           )
-                          //         ],
-                          //       )
-                          //     :
-                          Container(
-                            alignment: Alignment.center,
-                            child: SliderButton(
-                              shimmer: false,
-                              action: () async {
-                                Navigator.of(context).pushReplacement(
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const MarketHome()));
-                              },
-                              label: const Text('Slide to login'),
-                              icon: const Icon(Icons.check),
-                            ),
-                          )
+                          const SizedBox(height: 45),
+                          (_session.chainId != 80001)
+                              ? Row(
+                                  children: const [
+                                    Icon(Icons.warning,
+                                        color: Colors.redAccent, size: 15),
+                                    Text(
+                                      'Network not supported.\n Switch to Mumbai Testnet',
+                                      style: TextStyle(color: Colors.red),
+                                    )
+                                  ],
+                                )
+                              : Container(
+                                  alignment: Alignment.center,
+                                  child: SliderButton(
+                                    backgroundColor: AppColors.button,
+                                    shimmer: false,
+                                    action: () async {
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) => MarketHome(
+                                                  connector: connector,
+                                                  session: _session,
+                                                  uri: _uri)));
+                                    },
+                                    label: const Text('Slide to login'),
+                                    icon: const Icon(Icons.check),
+                                  ),
+                                )
                         ],
                       ))
                   : ElevatedButton(

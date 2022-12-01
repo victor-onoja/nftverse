@@ -12,7 +12,7 @@ class AppTheme {
         appBarTheme:
             const AppBarTheme(centerTitle: false, color: AppColors.button),
         colorScheme: colorScheme,
-        textTheme: GoogleFonts.sarinaTextTheme(
+        textTheme: GoogleFonts.syneMonoTextTheme(
           _textTheme(colorScheme),
         ),
       );

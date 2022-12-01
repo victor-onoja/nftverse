@@ -40,6 +40,7 @@ dependencies:
   url_launcher: ^6.1.6
   walletconnect_dart: ^0.0.11
   slider_button: ^2.0.0
+  flutter_riverpod: ^2.0.2
 
 dev_dependencies:
   flutter_test:
