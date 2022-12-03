@@ -40,4 +40,4 @@ The Dapp was a desinged for mobile (android/ios). The homepage which is the mark
 
 ## Challenges
 - My major challenge was time; building the dapp while preparing for exams and also carrying out my final year project all in two weeks was quite the ride but I was able to overcome by effective time management. 
-- Building a flutter dapp, connnecting to wallects, integrating the smart contract, i didn't understand how to do half of what was required. But with extensive research, the help of flutter official docs, stack overflow and a sprinkle of trial and error. I believe i have overcomed this challenge.
+- Building a flutter dapp, connnecting to wallets, integrating the smart contract, i didn't understand how to do half of what was required but with extensive research, the help of flutter official docs, stack overflow and a sprinkle of trial and error. I believe i have overcomed this challenge.
