@@ -24,7 +24,7 @@ The features folder is subdivided into four folders; each representing a specifi
 
 The app assets are located in the images folder
 
-The app contracts are located in the contracts folder
+The app smart contracts are located in the contracts folder
 
 ## Design description
 The Dapp was a desinged for mobile (android/ios). The homepage which is the marketplace contains a drawer for navigating to other features pages. The UI design is simple and minimalistic, 100% my ideas.  
