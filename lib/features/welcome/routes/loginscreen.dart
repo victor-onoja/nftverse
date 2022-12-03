@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:nftverse/features/market/markethome.dart';
+import 'package:nftverse/features/market/routes/markethome.dart';
 import 'package:slider_button/slider_button.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:walletconnect_dart/walletconnect_dart.dart';
-import '../../constants/colors.dart';
+import '../../../constants/colors.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

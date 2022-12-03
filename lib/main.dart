@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nftverse/constants/themes.dart';
 
-import 'features/welcome/splashscreen.dart';
+import 'features/welcome/routes/splashscreen.dart';
 
 void main() {
   runApp(const MyApp());

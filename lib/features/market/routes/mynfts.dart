@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nftverse/features/market/markethome.dart';
+import 'package:nftverse/features/market/routes/markethome.dart';
 
-import '../../constants/colors.dart';
+import '../../../constants/colors.dart';
 
 class MyNFTs extends StatefulWidget {
   final connector, session, uri;
