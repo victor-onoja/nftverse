@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nftverse/constants/colors.dart';
+import 'package:nftverse/features/market/model/mpitem.dart';
+import 'package:nftverse/features/market/model/mpitemwidget.dart';
 import 'package:nftverse/features/market/routes/mynfts.dart';
-import 'package:nftverse/features/market/widget/gridwidget.dart';
-import 'package:provider/provider.dart';
-
-import '../model/mpitems.dart';
 
 class MarketHome extends StatefulWidget {
   final connector, session, uri;
@@ -19,7 +17,6 @@ class MarketHome extends StatefulWidget {
 }
 
 class _MarketHomeState extends State<MarketHome> {
-  var _showOnlyMine = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -73,7 +70,17 @@ class _MarketHomeState extends State<MarketHome> {
           ],
         ),
       ),
-      body: GridWidget(showMine: _showOnlyMine),
+      body: Container(
+          padding: EdgeInsets.all(12.0),
+          child: GridView.builder(
+            itemCount: mpitems.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, crossAxisSpacing: 4.0, mainAxisSpacing: 4.0),
+            itemBuilder: (BuildContext context, int index) {
+              return MPITEMWidget(
+                  image: mpitems[index].image, title: mpitems[index].title);
+            },
+          )),
     ));
   }
 }

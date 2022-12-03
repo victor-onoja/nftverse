@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-class MPITEM with ChangeNotifier {
+class MPITEM {
   String id;
   String image;
   String title;
@@ -13,8 +11,10 @@ class MPITEM with ChangeNotifier {
       required this.title,
       required this.price,
       this.isMine = false});
-  void toggleFavoriteStatus() {
-    isMine = !isMine;
-    notifyListeners();
-  }
 }
+
+final List<MPITEM> mpitems = [
+  MPITEM(image: 'images/nft.png', title: 'Title', price: 12, id: 'm1'),
+  MPITEM(image: 'images/nft.png', title: 'Title2', price: 12, id: 'm2'),
+  MPITEM(image: 'images/nft.png', title: 'Title3', price: 12, id: 'm3'),
+];
